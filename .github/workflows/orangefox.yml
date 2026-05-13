@@ -1,10 +1,10 @@
 name: Build & Release OrangeFox R12.1 - Oppo A5s
 
 on:
-  workflow_dispatch: # Mengizinkan Anda menekan tombol "Run workflow" secara manual
+  workflow_dispatch: # Jalankan manual dari tab Actions
 
 permissions:
-  contents: write # Wajib untuk mengizinkan GitHub Actions membuat Release
+  contents: write # Izin untuk membuat Release
 
 jobs:
   build:
@@ -45,7 +45,9 @@ jobs:
           
           # 3. Gunakan 'sync.git' (Repositori khusus CI) dan branch fox_9.0
           repo init -u https://gitlab.com/OrangeFox/sync.git -b fox_9.0
-          repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags      - name: "Clone Device Tree (Branch: main)"
+          repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+
+      - name: "Clone Device Tree (Branch: main)"
         run: |
           cd workspace
           git clone --depth=1 -b main https://github.com/ZG089/android_device_OPPO_CPH1909 device/oppo/CPH1909
