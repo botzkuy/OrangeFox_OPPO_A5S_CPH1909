@@ -38,7 +38,7 @@ jobs:
           repo init -u https://gitlab.com/OrangeFox/manifest.git -b fox_8.1
           repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 
-      - name: Clone Device Tree (Branch: main)
+      - name: "Clone Device Tree (Branch: main)"
         run: |
           cd workspace
           git clone --depth=1 -b main https://github.com/ZG089/android_device_OPPO_CPH1909 device/oppo/CPH1909
